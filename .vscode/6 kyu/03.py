@@ -1,14 +1,13 @@
-from collections import Counter
-
-def solve(s):
-    counts = Counter(s)
-    values = list(counts.values())
-    if len(set(values)) <= 1:  # Check if all counts are already equal
-        return True
-    for i in range(len(values)):
-        if all(abs(values[j] - values[i]) <= 1 for j in range(len(values)) if j != i):
-            return True
-    return False
-
-# Test case
-print(solve('abbccc'))
+class Robot:
+    def __init__(self, word):
+        self.word = word
+    
+    def learnWord(self, seen):
+        seen = ()
+        if not all(letter.isalpha() for letter in self.word):
+            return 'I do not understand the input'
+        elif self.word not in seen:
+            return f'Thank you for teaching me {self.word}'
+            seen.add(self.word)
+        else:
+            return f'I already know the word {self.word}'
